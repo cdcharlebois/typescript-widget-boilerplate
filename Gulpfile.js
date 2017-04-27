@@ -115,6 +115,11 @@ gulp.task("icon", (cb) => {
         }));
 });
 
+gulp.task("paths", (done) => {
+    gutil.log(`\n\n${JSON.stringify(paths, null, 4).replace(/\\\\/g, '\\')}\n`);
+    done();
+});
+
 gulp.task("modeler", (cb) => {
     widgetBuilderHelper.runmodeler(
         MODELER_PATH, MODELER_ARGS,
