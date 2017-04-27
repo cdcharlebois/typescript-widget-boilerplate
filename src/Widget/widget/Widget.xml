@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget id="Widget.widget.Widget" needsEntityContext="true" offlineCapable="false" xmlns="http://www.mendix.com/widget/1.0/">
+    <name>Widget</name>
+    <description>Widget</description>
+    <icon></icon>
+    <properties>
+        <property key="dummyKey" type="translatableString" required="false">
+            <caption>Dummy Key</caption>
+            <category>Main</category>
+            <description></description>
+            <translations>
+                <translation lang="en_US"></translation>
+            </translations>
+        </property>
+    </properties>
+</widget>
