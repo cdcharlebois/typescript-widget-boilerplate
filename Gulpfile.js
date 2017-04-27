@@ -25,9 +25,7 @@ const webpackConfig = require("./webpack.config");
 const webpackConfigRelease = {};
 
 let plugins = webpackConfig.plugins.slice(0);
-plugins.push(new webpack.optimize.UglifyJsPlugin({
-    //compress: true
-}));
+plugins.push(new webpack.optimize.UglifyJsPlugin({}));
 
 Object.assign(webpackConfigRelease, webpackConfig, {
     devtool: false,
@@ -69,13 +67,14 @@ const compress = () => gulp.src(paths.WATCH_DIST)
 
 gulp.task("default", ['webpack:develop'], () => {
     gulp.watch(paths.SRC_FOLDER, ['webpack:develop', 'copy:src']);
-    gulp.watch(paths.WATCH_DIST, ['copy:deployment']);
+    gulp.watch(paths.WATCH_DIST, ['copy:deployment', 'compress']);
 });
 
 gulp.task('copy:src', [], () => gulp.src([
         paths.SRC_FOLDER,
         `!${paths.SRC_FOLDER}.ts`,
-        `!${paths.SRC_FOLDER}.css`
+        `!${paths.SRC_FOLDER}.css`,
+        `!${paths.SRC_FOLDER}.scss`
     ], { nodir: true })
     .pipe(gulp.dest(paths.DIST_TMP_SRCFILES)));
 

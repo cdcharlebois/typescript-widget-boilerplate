@@ -3,7 +3,7 @@ import * as WidgetBase from "mxui/widget/_WidgetBase";
 
 const declareWidget = (id: string, Widget: any) => {
     // tslint:disable : only-arrow-functions
-    dojoDeclare(id, [ WidgetBase ], function(Source: any) {
+    dojoDeclare(id, [WidgetBase], function(Source: any) {
         const result: any = {};
         for (const property in Source.prototype) {
             if (property !== "constructor" && Source.prototype.hasOwnProperty(property)) {
@@ -11,14 +11,17 @@ const declareWidget = (id: string, Widget: any) => {
             }
         }
         return result;
-    }(Widget));
+    } (Widget));
 }
 
-function debug(this: any, method: string, msg = '') {
-    logger.debug(`${this.id}.${method} ${msg}`);
+function executeCallback (this:any, from: string, cb?: () => void) {
+    if (cb) {
+        window.logger && window.logger.debug(`${this.id} execute callback from ${from}`);
+        cb();
+    }
 }
 
 export {
     declareWidget,
-    debug
+    executeCallback
 }

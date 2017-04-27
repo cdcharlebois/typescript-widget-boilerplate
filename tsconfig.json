@@ -7,6 +7,7 @@
     "sourceMap": true,
     "module": "amd",
     "target": "es5",
+    "experimentalDecorators": true,
     "types": [ "mendix-client" ],
     "moduleResolution": "node",
     "declaration": false,

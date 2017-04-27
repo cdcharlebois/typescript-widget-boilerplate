@@ -18,7 +18,7 @@ const config = {
     output: {
         path: path.resolve(__dirname, "dist/tmp"),
         filename: `src/${pkg.widget.name}/widget/${pkg.widget.name}.js`,
-        libraryTarget: "umd"
+        libraryTarget: "amd"
     },
     resolve: {
         extensions: [ ".ts", ".js", ".json" ]
@@ -34,6 +34,16 @@ const config = {
                 loader: ExtractTextPlugin.extract({
                     fallback: "style-loader",
                     use: "css-loader"
+                })
+            },
+            {
+                test: /\.scss$/,
+                loader: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: [
+                        { loader: "css-loader" },
+                        { loader: "sass-loader" }
+                    ]
                 })
             }
         ]
