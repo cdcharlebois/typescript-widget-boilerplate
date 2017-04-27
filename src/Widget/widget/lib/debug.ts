@@ -1,3 +1,13 @@
+/**
+ * Decorator for debugging methods in a widget
+ *
+ * Add as: @debugMethod
+ * @private
+ * @param  {any}                          target     [description]
+ * @param  {string}                       key        [description]
+ * @param  {TypedPropertyDescriptor<any>} descriptor [description]
+ * @return {TypedPropertyDescriptor}                 [description]
+ */
 function debugMethod(target: any, key: string, descriptor: TypedPropertyDescriptor<any>) {
     if (descriptor === undefined) {
         descriptor = Object.getOwnPropertyDescriptor(target, key);
@@ -19,6 +29,16 @@ function debugMethod(target: any, key: string, descriptor: TypedPropertyDescript
     return descriptor;
 }
 
+/**
+ * Decorator for debugging parameters in the widget methods
+ *
+ * Add as: @debugParam
+ * @private
+ * @param  {any}    target [description]
+ * @param  {string} key    [description]
+ * @param  {number} index  [description]
+ * @return {void}          [description]
+ */
 function debugParam(target: any, key: string, index: number) {
     var metadataKey = `__log_${key}_parameters`;
     if (Array.isArray(target[metadataKey])) {
@@ -28,7 +48,14 @@ function debugParam(target: any, key: string, index: number) {
     }
 }
 
-function debug(this:any, ...args: any[]) {
+/**
+ * Decorator for Mendix widget debugging. Add @debug to a method or parameter
+ *
+ * @param  {any}    this    [description]
+ * @param  {any[]}  ...args [description]
+ * @return {[type]}         [description]
+ */
+function debug(this:any, ...args: any[]):void {
     switch (args.length) {
         case 1:
             throw new Error("Class debug decorator not implemented yet");

@@ -5,23 +5,24 @@ import './ui/Widget.scss';
 
 class Widget extends WidgetBase {
     // Set in modeler
-    public name: string;
+    public name: string
 
     // Private properties
-    private _execCB: typeof executeCallback;
-    private _contextObj: mendix.lib.MxObject;
+    private _execCB: typeof executeCallback
+    private _contextObj: mendix.lib.MxObject
 
     // This could be omitted
-    constructor() {
-        super();
-    }
+    //constructor() {
+    //    super();
+    //}
 
     // Public methods (overridden from WidgetBase)
     postCreate() {
+        // Define _execCB as part of the widget
         this._execCB = executeCallback.bind(this);
     }
 
-    update(obj: mendix.lib.MxObject, cb?:() => void){
+    update(obj: mendix.lib.MxObject, cb?:() => void) {
         this._contextObj = obj;
         this._updateRendering(cb);
     }
