@@ -1,7 +1,7 @@
 import * as dojoDeclare from "dojo/_base/declare";
 import * as WidgetBase from "mxui/widget/_WidgetBase";
 
-const declare = (id: string, Widget: any) => {
+const declareWidget = (id: string, Widget: any) => {
     // tslint:disable : only-arrow-functions
     dojoDeclare(id, [ WidgetBase ], function(Source: any) {
         const result: any = {};
@@ -19,6 +19,6 @@ function debug(this: any, method: string, msg = '') {
 }
 
 export {
-    declare,
+    declareWidget,
     debug
 }

@@ -1,4 +1,4 @@
-import { declare, debug } from './lib/helpers';
+import { declareWidget, debug } from './lib/helpers';
 import * as WidgetBase from "mxui/widget/_WidgetBase";
 
 import "./ui/Widget.css";
@@ -8,7 +8,6 @@ class Widget extends WidgetBase {
 
     postCreate() {
         this.debug = debug.bind(this);
-
     }
 
     uninitialize(): boolean {
@@ -17,4 +16,4 @@ class Widget extends WidgetBase {
     }
 }
 
-declare('Widget.widget.Widget', Widget);
+declareWidget('Widget.widget.Widget', Widget);
